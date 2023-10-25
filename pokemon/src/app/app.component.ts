@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { TypeList } from './typelist.model';
 
 
 @Component({
@@ -10,13 +11,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'pokemon';
-  pokemonList : any[] = [];
-  obs! : Observable <any[]>;
+  pokemonList! : TypeList;
+  obs! : Observable <TypeList>;
   constructor(private http : HttpClient)
-  {this.obs = this.http.get<any[]>("https://pokeapi.co/api/v2/type");
+  {this.obs = this.http.get<TypeList>("https://pokeapi.co/api/v2/type");
   this.obs.subscribe(this.doSomething)
   }
-  doSomething = (data : any[]) => {
+  doSomething = (data : TypeList) => {
     this.pokemonList = data;
   }
   
