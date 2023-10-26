@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListaPokemonComponent } from './lista-pokemon/lista-pokemon.component';
 
 const routes: Routes = [
-  { path: 'ListaPokemon', component: ListaPokemonComponent },
+  { path: 'pokemon/:id', component: ListaPokemonComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+  
+}

@@ -10,15 +10,20 @@ import { TypeList } from './typelist.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'pokemon';
-  pokemonList! : TypeList;
-  obs! : Observable <TypeList>;
-  constructor(private http : HttpClient)
-  {this.obs = this.http.get<TypeList>("https://pokeapi.co/api/v2/type");
-  this.obs.subscribe(this.doSomething)
+  pokemonList: TypeList = {count:0, next:null, previous: null, results:[]} ;
+  obs!: Observable<TypeList>;
+  constructor(private http: HttpClient) {
+    this.obs = this.http.get<TypeList>("https://pokeapi.co/api/v2/type");
+    this.obs.subscribe(this.doSomething)
   }
-  doSomething = (data : TypeList) => {
+  doSomething = (data: TypeList) => {
     this.pokemonList = data;
   }
-  
+  getLastPart(arg0: string) {
+    let myvect = arg0.split('/')
+    return myvect[6]
+  }
+
 }
