@@ -1,10 +1,8 @@
-<div class="container">
-    <ul>
-      <li *ngFor="let pokemonType of pokemonList.results">
-        <a [routerLink]="['/pokemon', getLastPart(pokemonType.url)]">
-          {{ pokemonType.name }}<br>
-        </a>
-      </li>
-    </ul>
-    <router-outlet></router-outlet>
-  </div>
+<div *ngFor=" let pokemonType of pokemonList.results">
+  <a routerLink="/pokemon/{{getLastPart(pokemonType.url)}}"> 
+      {{pokemonType.name}}
+  </a>
+  <hr>
+</div>
+
+<router-outlet></router-outlet> 

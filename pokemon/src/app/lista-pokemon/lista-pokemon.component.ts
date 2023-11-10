@@ -17,14 +17,12 @@ export class ListaPokemonComponent implements OnInit {
 
   obs!: Observable<TypeList>;
   pok : any; 
-
   genVect!: Observable<TypeList>;
 
 
   //Riceve l'oggetto ActivatedRoute come dependency injection
   constructor(private route: ActivatedRoute, private http: HttpClient) {
     //Gestisce i cambi di route con l'observable paramMap
-    //this.route.paramMap.subscribe(this.getRouterParam);
     this.routepokemon = this.route.paramMap;
     this.routepokemon.subscribe(this.getRouterParam);
   }
@@ -36,16 +34,11 @@ export class ListaPokemonComponent implements OnInit {
 
     let uri_param = params.get('id'); //Ottengo l'id dalla ParamMap
     console.log(uri_param); //Stampo su console
-   //this.service.getTrack() 
-   //if (uri_param == 'fruits') this.genVect = FRUITS;
-   //if (uri_param == 'animals') this.genVect = ANIMALS;
 
-    //console.log(params);
-    //let itemId = params.get('id');
-    //console.log(itemId);
+
     this.obs = this.http.get<TypeList>("https://pokeapi.co/api/v2/type/"+uri_param);
     console.log("https://pokeapi.co/api/v2/type/"+uri_param);
-    this.obs.subscribe((data)=>this.pok= data)
+    this.obs.subscribe((data)=>this.pok = data)
   };
 
   
